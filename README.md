@@ -2,7 +2,7 @@
 
 A Next.js web app that solves the e-commerce inventory reservation problem — ensuring two users can never reserve the same last item simultaneously.
 
-**Live Demo:** [your-vercel-url-here] ← update this after deployment
+**Live Demo:** https://jesvanth-allo-task-2xv6p54ez-jesvanths-projects.vercel.app/
 
 **GitHub:** https://github.com/Jesvanth/allo-inventory
 
