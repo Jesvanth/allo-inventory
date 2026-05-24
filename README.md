@@ -127,6 +127,8 @@ The core challenge: two users trying to reserve the last item simultaneously.
 
 ---
 
+> **Note:** Vercel free tier limits cron jobs to once per day. In production, this would run every minute. The client-side countdown timer handles immediate expiry on the frontend — when the timer hits zero, `/release` is called instantly regardless of the cron schedule.
+
 ## Built by
 
 **Jesvanth S**
