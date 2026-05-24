@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 
 interface Product { id: string; name: string; description: string; price: number; imageUrl: string }
@@ -12,7 +12,7 @@ const PRODUCT_OVERRIDES: Record<string, { image: string; displayName?: string }>
   'product-4': { image: 'https://images.unsplash.com/photo-1623949556303-b0d17d198863?w=600&q=80', displayName: 'Webcam HD' },
 }
 
-export default function CheckoutPage() {
+function CheckoutPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const reservationId = searchParams.get('reservationId')
@@ -169,5 +169,18 @@ export default function CheckoutPage() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function CheckoutPageWrapper() {
+  return (
+    <Suspense fallback={
+      <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',background:'#080810'}}>
+        <div style={{width:40,height:40,border:'2px solid #d4af37',borderTopColor:'transparent',borderRadius:'50%',animation:'spin 0.8s linear infinite'}}></div>
+        <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+      </div>
+    }>
+      <CheckoutPage />
+    </Suspense>
   )
 }
